@@ -1,14 +1,14 @@
 import os
 from telegram import Update
 from telegram.ext import (
-    ApplicationBuilder,
+    Application,
     CommandHandler,
     MessageHandler,
-    filters,
     ContextTypes,
+    filters,
 )
 
-TOKEN = os.getenv("BOT_TOKEN")   # 🔥 Using environment variable
+TOKEN = os.getenv("BOT_TOKEN")
 
 WELCOME_TEXT = (
     "Assalamualaikum — Main PlayoutMaster Bot hoon.\n\n"
@@ -53,7 +53,7 @@ async def auto_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
 def main():
-    app = ApplicationBuilder().token(TOKEN).build()
+    app = Application.builder().token(TOKEN).build()
 
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("help", help_command))
